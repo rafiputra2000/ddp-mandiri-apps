@@ -8,6 +8,7 @@ import { FaqComponent } from './faq/faq.component';
 import { InstructorComponent } from './instructor/instructor.component';
 import { ContactComponent } from './contact/contact.component';
 import { HomeComponent } from './home.component';
+import { CoursesComponent } from './courses/courses.component';
 
 
 
@@ -20,7 +21,8 @@ import { HomeComponent } from './home.component';
     FaqComponent,
     InstructorComponent,
     ContactComponent,
-    HomeComponent
+    HomeComponent,
+    CoursesComponent
   ],
   imports: [
     CommonModule
