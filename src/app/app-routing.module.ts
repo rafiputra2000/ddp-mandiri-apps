@@ -1,16 +1,42 @@
 import { NgModule } from "@angular/core";
 import { Routes, RouterModule} from "@angular/router";
+import { CoursesComponent } from "./pages/courses/courses.component";
+import { PagesComponent } from "./pages/pages.component";
 import { NotFoundComponent } from "./shared/components/not-found/not-found.component";
 
 
+// const routes:Routes = [
+//   {
+//     path: "demo",
+//     loadChildren: () => import('./demo/demo.module').then(m => m.DemoModule)
+//   },
+//   {
+//     path: "",
+//     redirectTo: "/demo",
+//     pathMatch: "full"
+//   },
+//   {
+//       path: '**',
+//       component: NotFoundComponent
+//   }
+// ]
+
 const routes:Routes = [
+  // {
+  //   path: "demo",
+  //   loadChildren: () => import('./demo/demo.module').then(m => m.DemoModule)
+  // },
   {
-    path: "demo",
-    loadChildren: () => import('./demo/demo.module').then(m => m.DemoModule)
+    path: "home",
+    component: PagesComponent
+  },
+  {
+    path: "courses",
+    component: CoursesComponent
   },
   {
     path: "",
-    redirectTo: "/demo",
+    redirectTo: "/home",
     pathMatch: "full"
   },
   {

@@ -9,6 +9,7 @@ import { InstructorComponent } from './instructor/instructor.component';
 import { ContactComponent } from './contact/contact.component';
 import { HomeComponent } from './home.component';
 import { CoursesComponent } from './courses/courses.component';
+import { RouterModule } from '@angular/router';
 
 
 
@@ -25,7 +26,8 @@ import { CoursesComponent } from './courses/courses.component';
     CoursesComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    RouterModule
   ],
   exports: [
     BannerComponent,
