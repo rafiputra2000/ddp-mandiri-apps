@@ -4,41 +4,21 @@
       <h1>Our Instructor</h1>
       <p class="lead"> Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nulla dignissimos rem, iste tempora, officia, dolores nostrum amet nihil a molestiae consequuntur earum quae porro illo consectetur nesciunt? Blanditiis, cum suscipit.</p>
       <div class="row g-4 text-center">
-        <div class="col-lg-4 col-md-6 col-sm-12">
+        <div class="col-lg-4 col-md-6 col-sm-12" *ngFor="let instructor of instructors">
           <div class="card">
             <img src="../../../../assets/images/1.png" class="card-img-top" alt="...">
             <div class="card-body">
-              <h5 class="card-title">Card title</h5>
+              <h5 class="card-title">{{ instructor.name }}</h5>
               <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
               <a href="#" class="btn btn-primary">Go somewhere</a>
             </div>
           </div>
         </div>
-        <div class="col-lg-4 col-md-6 col-sm-12">
-          <div class="card">
-            <img src="../../../../assets/images/2.png" class="card-img-top" alt="...">
-            <div class="card-body">
-              <h5 class="card-title">Card title</h5>
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-              <a href="#" class="btn btn-primary">Go somewhere</a>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-4 col-md-6 col-sm-12">
-          <div class="card">
-            <img src="../../../../assets/images/3.png" class="card-img-top" alt="...">
-            <div class="card-body">
-              <h5 class="card-title">Card title</h5>
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-              <a href="#" class="btn btn-primary">Go somewhere</a>
-            </div>
-          </div>
-        </div>
-        <div id="showMoreBtn" class="d-grid col-3 mx-auto mt-4">
-          <a routerLink="/home/courses">
-            <button class="btn btn-outline-secondary" type="button">Show More</button>
-          </a>
       </div>
-      </div>
+      <div id="showMoreBtn" class="d-grid col-3 mx-auto mt-4">
+        <a routerLink="/home/courses">
+          <button class="btn btn-outline-secondary" type="button">Show More</button>
+        </a>
+    </div>
   </div>
 </section>

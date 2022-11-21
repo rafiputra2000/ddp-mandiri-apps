@@ -11,3 +11,13 @@
 
 <h3>name: {{ name }}</h3>
 <h3>address: {{ address }}</h3>
+<h3>participants: {{ participants }}</h3>
+<h3>languange name: {{ language.name }}</h3>
+<h3>languange status: {{ language.status }}</h3>
+<h3>languange object view: {{ language.name }} {{ language.status }}</h3>
+<h3>languange object view in function : {{ onViewMessage() }}</h3>
+
+
+<ul class="list-group mt-5">
+  <li class="list-group-item" *ngFor="let employee of employees">{{ employee.name }}</li>
+</ul>
