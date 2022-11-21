@@ -10,6 +10,7 @@ import { ContactComponent } from './contact/contact.component';
 import { HomeComponent } from './home.component';
 import { CoursesComponent } from './courses/courses.component';
 import { RouterModule } from '@angular/router';
+import { HomeRoutingModule } from './home-routing.module';
 
 
 
@@ -27,6 +28,7 @@ import { RouterModule } from '@angular/router';
   ],
   imports: [
     CommonModule,
+    HomeRoutingModule,
     RouterModule
   ],
   exports: [

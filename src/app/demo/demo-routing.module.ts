@@ -24,7 +24,7 @@ const routes:Routes = [
     ]
   },
   {
-    path: "component-b",
+    path: "component-b/:id",
     component: ComponentBComponent
   }
 ]

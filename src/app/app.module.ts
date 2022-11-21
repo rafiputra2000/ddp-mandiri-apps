@@ -12,8 +12,6 @@ import { DemoModule } from './demo/demo.module';
   imports: [
     BrowserModule,
     SharedModule,
-    PagesModule,
-    CoursesModule,
     AppRoutingModule,
 
   ], // untuk imports components
