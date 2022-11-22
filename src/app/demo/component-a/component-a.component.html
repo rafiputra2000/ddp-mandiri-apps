@@ -5,11 +5,30 @@
   <li class="list-group-item"><a routerLink="/demo/component-a/child-ab">child-ab</a></li>
 </ul>
 
-<a routerLink="/demo/component-b" class="btn btn-outline-primary"> Go to component B</a>
-
 <router-outlet></router-outlet>
 
-<h3>name: {{ name }}</h3>
+<div class="btn-group">
+  <button class="btn btn-outline-primary"> Go To Component B</button>
+  <button class="btn btn-outline-warning" [disabled]="isDisabled" (click)="showMe()"> Show me</button>
+</div>
+
+<h3>{{ message }}</h3>
+
+<div class="mt-5 mb-5">
+  <h3 [innerHTML]="messageHover" (mouseover)="mouseOver()" (mouseout)="mouseOut()"></h3>
+</div>
+
+<div class="mb-5">
+  <input type="text" class="form-control" (change)="onMessageInput($event)">
+
+</div>
+
+<h3>{{ messageInput }}</h3>
+<!-- <a  routerLink="/demo/component-b" class="btn btn-outline-primary"> Go to component B</a> -->
+
+
+
+<!-- <h3>name: {{ name }}</h3>
 <h3>address: {{ address }}</h3>
 <h3>participants: {{ participants }}</h3>
 <h3>languange name: {{ language.name }}</h3>
@@ -24,4 +43,4 @@
       {{ employee.name }}
     </span>
   </li>
-</ul>
+</ul> -->

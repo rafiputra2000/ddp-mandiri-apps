@@ -8,6 +8,15 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class ComponentAComponent implements OnInit {
 
+  isDisabled: boolean = false
+
+
+  disabled(): void{
+    setTimeout(() => {
+      this.isDisabled = true;
+    },5000)
+  }
+
   name: string = 'Rafi';
   address: string = 'pandugo';
   participants: string[]= ['matahari', 'bulan', 'bintang'];
@@ -22,7 +31,6 @@ export class ComponentAComponent implements OnInit {
 
   onViewMessage(): string {
     return `${this.language.name} ${this.language.status}`
-
   }
 
   employees = [
@@ -58,11 +66,43 @@ export class ComponentAComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.disabled()
     // this.route.queryParams.subscribe((params) => {
     //   const { name, address } = params;
     //   this.name = name;
     //   this.address = address;
     // })
+  }
+
+
+  // penerapan event binding
+  message: string= '';
+  showMe(): void {
+    this.message = 'Ahh aku di klik'
+  }
+
+  messageHover: string = "hover aku dong!"
+  mouseOut(): void{
+    this.messageHover = 'Lagi Dong!!!'
+  }
+
+  mouseOver(): void {
+    this.messageHover = 'Terima Kasih sudah meng-hover aku !'
+  }
+
+
+  messageInput: string = ''
+  onMessageInput($event: any){
+    console.log('$event', $event);
+    console.log('$event.target.value', $event.target.value);
+    const { value } = $event.target;
+
+    if (value.toLowerCase() !== 'mandiri') {
+      this.messageInput= 'Aku tetap mandirian';
+
+    } else {
+      this.messageInput = 'Aku mandirian'
+    }
   }
 
 }
