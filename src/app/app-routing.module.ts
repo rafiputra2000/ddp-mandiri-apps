@@ -46,17 +46,17 @@ import { NotFoundComponent } from "./shared/components/not-found/not-found.compo
 // ]
 
 const routes:Routes = [
+  {
+    path: "demo",
+    loadChildren: () => import('./demo/demo.module').then(m => m.DemoModule)
+  },
   // {
-  //   path: "demo",
-  //   loadChildren: () => import('./demo/demo.module').then(m => m.DemoModule)
+  //   path: "home",
+  //   loadChildren: () => import('./pages/pages.module').then(m => m.PagesModule)
   // },
   {
-    path: "home",
-    loadChildren: () => import('./pages/pages.module').then(m => m.PagesModule)
-  },
-  {
     path: "",
-    redirectTo: "/home",
+    redirectTo: "/demo/component-a",
     pathMatch: "full"
   },
   {

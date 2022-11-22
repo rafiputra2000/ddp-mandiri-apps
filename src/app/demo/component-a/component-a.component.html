@@ -19,5 +19,9 @@
 
 
 <ul class="list-group mt-5">
-  <li class="list-group-item" *ngFor="let employee of employees">{{ employee.name }}</li>
+  <li class="list-group-item" *ngFor="let employee of employees; index as i">
+    <span [ngStyle]="{'color': i % 2 == 0 ? 'gold' : 'blue'}">
+      {{ employee.name }}
+    </span>
+  </li>
 </ul>
