@@ -4,8 +4,14 @@ import { ChildAaComponent } from "./component-a/child-aa/child-aa.component";
 import { ChildAbComponent } from "./component-a/child-ab/child-ab.component";
 import { ComponentAComponent } from "./component-a/component-a.component";
 import { ComponentBComponent } from "./component-b/component-b.component";
+import { ParentsComponent } from "./parents/parents.component";
 
 const routes:Routes = [
+  {
+    path: "parents",
+    component: ParentsComponent,
+
+  },
   {
     path: "component-a",
     component: ComponentAComponent,

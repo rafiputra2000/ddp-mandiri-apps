@@ -1,0 +1,17 @@
+<section class="p-5">
+  <h1 class="text-danger">Child component</h1>
+  <h2>{{ title }}</h2>
+  <h2>{{ messageChild }}</h2>
+
+  <h1>{{ count }}</h1>
+
+  <div class="btn-group">
+    <button class="btn btn-outline-primary" (click)="onIncrease()">+</button>
+    <button class="btn btn-outline-warning" (click)="onDecrease()">-</button>
+  </div>
+
+  <div class="mb-5">
+    <input type="text" class="form-control" (change)="onMessageInput($event)">
+  </div>
+
+</section>

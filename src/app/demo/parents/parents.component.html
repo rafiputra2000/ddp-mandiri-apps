@@ -1,0 +1,18 @@
+<section class="p-5">
+  <h1 class="text-danger">Parent component</h1>
+  <button class="btn btn-outline-primary" (click)="child()">Show me in child</button>
+  <h3>{{ counter }}</h3>
+  <h3>{{ messageParents }}</h3>
+</section>
+
+<!-- <app-child [messageChild]="messageParent"></app-child> -->
+
+
+<!-- two way binding -->
+<app-child [messageChild]="messageParent" [(counter)] = "counter" [(messageParents)] = "messageParents"></app-child>
+
+
+<!-- one way binding -->
+<!-- <app-child [messageChild]="messageParent" (counter) = "onChangeCounter($event)" (messageParents) = "onChangeInput($event)"></app-child> -->
+
+

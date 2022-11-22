@@ -99,10 +99,8 @@ export class ComponentAComponent implements OnInit {
 
     if (value.toLowerCase() !== 'mandiri') {
       this.messageInput= 'Aku tetap mandirian';
-
     } else {
-      this.messageInput = 'Aku mandirian'
+      this.messageInput = 'Aku mandirian';
     }
   }
-
 }
