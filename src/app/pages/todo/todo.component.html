@@ -10,7 +10,7 @@
         </div>
         <div class="col">
           <h3>Form</h3>
-          <app-todo-form></app-todo-form>
+          <app-todo-form (saveTodo)="onSaveTodo($event)"></app-todo-form>
         </div>
       </div>
     </div>

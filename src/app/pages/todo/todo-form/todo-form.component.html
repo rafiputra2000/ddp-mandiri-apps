@@ -1,7 +1,40 @@
-<div class="input-group mb-3">
-  <div class="input-group-text">
-    <input class="form-check-input mt-0" type="checkbox" value="" aria-label="Checkbox for following text input">
+<form [formGroup]="todoForm" (ngSubmit)="onSubmit()">
+  <div class="input-group mb-3">
+    <div class="input-group-text">
+      <input class="form-check-input mt-0" type="checkbox" value="" aria-label="Checkbox for following text input">
+    </div>
+    <input
+    type="text"
+    class="form-control"
+    aria-label="Text input with checkbox"
+    placeholder="Todo"
+    formControlName= "name">
+    <button class="btn btn-outline-secondary" [disabled]="!todoForm.valid">Add</button>
   </div>
-  <input type="text" class="form-control" aria-label="Text input with checkbox" placeholder="Todo">
-  <button class="btn btn-outline-secondary" type="button" id="button-addon2">Add</button>
-</div>
+</form>
+
+<!-- <h3>Form</h3>
+<div >
+  <div class="card-body">
+    <form [formGroup]="todoForm" (ngSubmit)="onSubmit()">
+      <div class="input-group mb-3">
+        <div class="input-group-text">
+          <input
+            class="form-check-input mt-0"
+            type="checkbox"
+            value=""
+            aria-label="Checkbox for following text input"
+          />
+        </div>
+        <input
+          placeholder="Todo"
+          type="text"
+          class="form-control"
+          aria-label="Text input with checkbox"
+          formControlName="name"
+          />
+        <button class="btn btn-outline-secondary" type="button" id="button-addon2" [disabled]="!todoForm.valid">Add</button>
+      </div>
+    </form>
+  </div>
+</div> -->

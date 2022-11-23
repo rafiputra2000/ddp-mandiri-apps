@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Todo } from './model/todo.model';
+import { TODO, Todo } from './model/todo.model';
 
 @Component({
   selector: 'app-todo',
@@ -17,28 +17,45 @@ export class TodoComponent implements OnInit {
   }
 
   loadTodos(): void {
-    this.todos = [
-      {
-        id: 1,
-        name: 'Makan',
-        isDone: false
-      },
-      {
-        id: 2,
-        name: 'Minum',
-        isDone: true
-      },
-      {
-        id: 3,
-        name: 'Mandi',
-        isDone: true
-      },
-      {
-        id: 4,
-        name: 'Ngoding',
-        isDone: true
-      },
-    ]
+    // penyebutan lembutnya adalah CASTING
+    const sessionTodos: string = sessionStorage.getItem(TODO) as string;
+    if (!sessionTodos){
+      const todos: Todo[] = [
+        {
+          id: 1,
+          name: 'Makan',
+          isDone: false
+        },
+        {
+          id: 2,
+          name: 'Minum',
+          isDone: true
+        },
+        {
+          id: 3,
+          name: 'Mandi',
+          isDone: true
+        },
+        {
+          id: 4,
+          name: 'Ngoding',
+          isDone: true
+        }
+      ]
+
+      sessionStorage.setItem(TODO, JSON.stringify(todos));
+      this.todos = todos
+    } else {
+      this.todos = JSON.parse(sessionTodos)
+    }
+
+  }
+
+  onSaveTodo(todo: Todo): void {
+    console.log('todo.component:', todo)
+    todo.id = this.todos.length + 1
+    this.todos.push(todo)
+    sessionStorage.setItem(TODO, JSON.stringify(this.todos))
   }
 
   onEditTodo(todo: Todo): void {
@@ -46,11 +63,6 @@ export class TodoComponent implements OnInit {
   }
 
   onToggleTodo(todo: Todo): void {
-
-  }
-
-  onSaveTodo(todo: Todo): void {
-    // todo.name =
 
   }
 
