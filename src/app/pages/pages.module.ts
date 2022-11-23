@@ -10,8 +10,7 @@ import { PagesRoutingModule } from './pages-routing.module';
   ],
   imports: [
     CommonModule,
-    HomeModule,
-    PagesRoutingModule
+    PagesRoutingModule,
   ],
   exports: [
     PagesComponent

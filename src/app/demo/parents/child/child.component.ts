@@ -35,14 +35,15 @@ export class ChildComponent implements OnInit {
     console.log('$event', $event);
     console.log('$event.target.value', $event.target.value);
     const { value } = $event.target;
+    this.messageParentsChange.emit(this.messageParentIni)
 
-    if (value.toLowerCase() !== 'mandiri') {
-      this.messageParentIni = 'Aku tetap mandirian';
-      this.messageParentsChange.emit(this.messageParentIni)
-    } else {
-      this.messageParentIni = 'Aku mandirian';
-      this.messageParentsChange.emit(this.messageParentIni)
-    }
+    // if (value.toLowerCase() !== 'mandiri') {
+    //   this.messageParentIni = 'Aku tetap mandirian';
+    //   this.messageParentsChange.emit(this.messageParentIni)
+    // } else {
+    //   this.messageParentIni = 'Aku mandirian';
+    //   this.messageParentsChange.emit(this.messageParentIni)
+    // }
   }
   // onIncrease() {
   //   this.count++
