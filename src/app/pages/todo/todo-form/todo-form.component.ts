@@ -19,7 +19,7 @@ export class TodoFormComponent implements OnInit {
   todoForm: FormGroup = new FormGroup({
     id: new FormControl(null),
     name: new FormControl('',[Validators.required, Validators.minLength(3)]),
-    isCompleted: new FormControl(false)
+    isDone: new FormControl(false)
   })
 
   onSubmit(): void {
@@ -27,5 +27,4 @@ export class TodoFormComponent implements OnInit {
     this.saveTodo.emit(this.todoForm.value);
     this.todoForm.reset()
   }
-
 }

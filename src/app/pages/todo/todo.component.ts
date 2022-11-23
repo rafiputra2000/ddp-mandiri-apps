@@ -42,13 +42,11 @@ export class TodoComponent implements OnInit {
           isDone: true
         }
       ]
-
       sessionStorage.setItem(TODO, JSON.stringify(todos));
       this.todos = todos
     } else {
       this.todos = JSON.parse(sessionTodos)
     }
-
   }
 
   onSaveTodo(todo: Todo): void {
@@ -58,12 +56,27 @@ export class TodoComponent implements OnInit {
     sessionStorage.setItem(TODO, JSON.stringify(this.todos))
   }
 
+  onToggleTodo(todo: Todo): void {
+    console.log('todo.component.onToggleTodo:', todo)
+  }
+
+  onDeleteTodo(todo: Todo): void {
+    console.log("todoDELETE", todo);
+
+    for(let index = 0; index < this.todos.length; index++){
+      console.log("index for",index);
+      if(this.todos[index].id === todo.id){
+        console.log("index if", index);
+        this.todos.splice(index, 1)
+      }
+    }
+    sessionStorage.setItem(TODO, JSON.stringify(this.todos))
+  }
+
+
   onEditTodo(todo: Todo): void {
 
   }
 
-  onToggleTodo(todo: Todo): void {
-
-  }
 
 }
