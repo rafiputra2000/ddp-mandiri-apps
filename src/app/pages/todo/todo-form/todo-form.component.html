@@ -3,13 +3,21 @@
     <div class="input-group-text">
       <input class="form-check-input mt-0" type="checkbox" value="" aria-label="Checkbox for following text input" formControlName="isDone">
     </div>
+    <!-- class="form-control {{isFormValid('name')}}" -->
     <input
     type="text"
     class="form-control"
+    [ngClass]="{'is-invalid': isFormValid('name')}"
     aria-label="Text input with checkbox"
     placeholder="Todo"
     formControlName= "name">
-    <button class="btn btn-outline-secondary" [disabled]="!todoForm.valid">Add</button>
+    <button appBsButton [disabled]="!todoForm.valid">Add</button>
+    <div class="invalid-feedback" *ngIf="name.errors?.['required']">
+      todo wajib di isi
+    </div>
+    <div class="invalid-feedback" *ngIf="name.errors?.['minlength']">
+      todo wajib di isi minimal 3 karakter
+    </div>
   </div>
 </form>
 

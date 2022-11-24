@@ -4,6 +4,9 @@ import { FooterComponent } from './components/footer/footer.component';
 import { HeaderComponent } from './components/header/header.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { RouterModule } from '@angular/router';
+import { HighlightDirective } from './directive/highlight.directive';
+import { BsButtonDirective } from './directive/bs-button.directive';
+import { DateCustomPipe } from './pipes/date-custom.pipe';
 
 
 
@@ -11,7 +14,10 @@ import { RouterModule } from '@angular/router';
   declarations: [
     FooterComponent,
     HeaderComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    HighlightDirective,
+    BsButtonDirective,
+    DateCustomPipe
   ],
   imports: [
     CommonModule,
@@ -19,7 +25,10 @@ import { RouterModule } from '@angular/router';
   ],
   exports: [
     FooterComponent,
-    HeaderComponent
+    HeaderComponent,
+    HighlightDirective,
+    BsButtonDirective,
+    DateCustomPipe
   ]
 })
 export class SharedModule { }
