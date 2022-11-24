@@ -9,12 +9,16 @@
           [todos]="todos"
           (toggleTodo)="onToggleTodo($event)"
           (deleteTodo)="onDeleteTodo($event)"
+          (editTodo)="onEditTodo($event)"
           >
         </app-todo-list>
         </div>
         <div class="col">
           <h3>Form</h3>
-          <app-todo-form (saveTodo)="onSaveTodo($event)"></app-todo-form>
+          <app-todo-form
+          (saveTodo)="onSaveTodo($event)"
+          [todo]="todo"
+          ></app-todo-form>
         </div>
       </div>
     </div>

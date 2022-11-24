@@ -9,6 +9,8 @@ import { TODO, Todo } from './model/todo.model';
 export class TodoComponent implements OnInit {
 
   todos: Todo[] = []
+  todo!: Todo;
+
 
   constructor() { }
 
@@ -50,19 +52,27 @@ export class TodoComponent implements OnInit {
   }
 
   onSaveTodo(todo: Todo): void {
-    console.log('todo.component:', todo)
-    todo.id = this.todos.length + 1
-    this.todos.push(todo)
-    sessionStorage.setItem(TODO, JSON.stringify(this.todos))
+    if(todo.id){
+      this.todos = this.todos.map((t) => {
+        if (t.id === todo.id) t = todo;
+        return t
+      });
+    } else {
+      console.log('todo.component:', todo)
+      todo.id = this.todos.length + 1
+      this.todos.push(todo)
+      sessionStorage.setItem(TODO, JSON.stringify(this.todos))
+    }
   }
 
   onToggleTodo(todo: Todo): void {
     console.log('todo.component.onToggleTodo:', todo)
+    sessionStorage.setItem(TODO, JSON.stringify(this.todos))
+
   }
 
   onDeleteTodo(todo: Todo): void {
     console.log("todoDELETE", todo);
-
     for(let index = 0; index < this.todos.length; index++){
       console.log("index for",index);
       if(this.todos[index].id === todo.id){
@@ -75,7 +85,7 @@ export class TodoComponent implements OnInit {
 
 
   onEditTodo(todo: Todo): void {
-
+    this.todo = todo;
   }
 
 

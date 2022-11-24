@@ -1,7 +1,7 @@
 <form [formGroup]="todoForm" (ngSubmit)="onSubmit()">
   <div class="input-group mb-3">
     <div class="input-group-text">
-      <input class="form-check-input mt-0" type="checkbox" value="" aria-label="Checkbox for following text input">
+      <input class="form-check-input mt-0" type="checkbox" value="" aria-label="Checkbox for following text input" formControlName="isDone">
     </div>
     <input
     type="text"
