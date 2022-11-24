@@ -10,7 +10,11 @@ import { Todo } from '../model/todo.model';
 
 export class TodoFormComponent implements OnInit {
 
+  //Two Ways Binding
   @Input() todo!: Todo
+  @Output() todoChange: EventEmitter<Todo> = new EventEmitter<Todo>()
+
+
   @Output() saveTodo: EventEmitter<Todo> = new EventEmitter<Todo>()
 
   constructor() { }
@@ -32,7 +36,7 @@ export class TodoFormComponent implements OnInit {
 
   onSubmit(): void {
     console.log(this.todoForm.value);
-    this.saveTodo.emit(this.todoForm.value);
+    this.todoChange.emit(this.todoForm.value);
     this.todoForm.reset()
   }
 

@@ -10,16 +10,20 @@ export class TodoListComponent implements OnInit {
 
   @Input() todos: Todo[] = []
 
-  constructor() { }
   @Output() toggleTodo: EventEmitter<Todo> = new EventEmitter<Todo>()
 
   @Output() deleteTodo: EventEmitter<Todo> = new EventEmitter<Todo>()
 
   @Output() editTodo: EventEmitter<Todo> = new EventEmitter<Todo>()
 
+  @Input() isLoading!: boolean
+
+  constructor() { }
+
+
 
   ngOnInit(): void {
-    
+
   }
 
   onCheckTodo(todo: Todo): void {

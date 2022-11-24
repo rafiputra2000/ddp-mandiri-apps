@@ -10,6 +10,7 @@
           (toggleTodo)="onToggleTodo($event)"
           (deleteTodo)="onDeleteTodo($event)"
           (editTodo)="onEditTodo($event)"
+          [isLoading]="isLoading"
           >
         </app-todo-list>
         </div>
@@ -17,7 +18,7 @@
           <h3>Form</h3>
           <app-todo-form
           (saveTodo)="onSaveTodo($event)"
-          [todo]="todo"
+          [(todo)]="todo"
           ></app-todo-form>
         </div>
       </div>
