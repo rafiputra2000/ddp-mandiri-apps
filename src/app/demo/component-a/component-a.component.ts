@@ -1,5 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { AfterContentChecked, AfterContentInit, AfterViewChecked, AfterViewInit, Component, DoCheck, OnChanges, OnDestroy, OnInit, SimpleChanges } from '@angular/core';
 import { Employee } from '../101/employee';
 
 @Component({
@@ -7,7 +6,15 @@ import { Employee } from '../101/employee';
   templateUrl: './component-a.component.html',
   styleUrls: ['./component-a.component.scss']
 })
-export class ComponentAComponent implements OnInit {
+export class ComponentAComponent implements
+OnInit,
+OnChanges,
+OnDestroy,
+DoCheck,
+AfterContentInit,
+AfterContentChecked,
+AfterViewInit,
+AfterViewChecked {
 
   isDisabled: boolean = false
 
@@ -62,25 +69,55 @@ export class ComponentAComponent implements OnInit {
   },
 ]
 
+  componentName = 'Component A';
+
   constructor(
     // private readonly route: ActivatedRoute
-  ) { }
-
-  ngOnInit(): void {
-    this.disabled()
-    // this.route.queryParams.subscribe((params) => {
-    //   const { name, address } = params;
-    //   this.name = name;
-    //   this.address = address;
-    // })
-    const employee: Employee = new Employee()
-    employee.fullName = 'Joko'
-    employee.address = 'Bali'
-
-    console.log(employee.fullName)
-    console.log(employee.address)
-    console.log(toString())
+    ) {
+      console.log(`constructor ${this.componentName} called!`);
+    }
+    
+  ngOnChanges(changes: SimpleChanges): void {
+    console.log('changes:', changes);
+    console.log(`ngOnChanges ${this.componentName} called!`);
   }
+  ngOnInit(): void {
+    console.log(`ngOnInit ${this.componentName} called!`);
+  }
+  ngOnDestroy(): void {
+    console.log(`ngOnDestroy ${this.componentName} called!`);
+  }
+  ngDoCheck(): void {
+    console.log(`ngDoCheck ${this.componentName} called!`);
+  }
+  ngAfterContentInit(): void {
+    console.log(`ngAfterContentInit ${this.componentName} called!`);
+  }
+  ngAfterContentChecked(): void {
+    console.log(`ngAfterContentChecked ${this.componentName} called!`);
+  }
+  ngAfterViewInit(): void {
+    console.log(`ngAfterViewInit ${this.componentName} called!`);
+  }
+  ngAfterViewChecked(): void {
+    console.log(`ngAfterViewChecked ${this.componentName} called!`);
+  }
+
+  // ngOnInit(): void {
+  //   this.disabled()
+  //   // this.route.queryParams.subscribe((params) => {
+  //   //   const { name, address } = params;
+  //   //   this.name = name;
+  //   //   this.address = address;
+  //   // })
+  //   const employee: Employee = new Employee()
+  //   employee.fullName = 'Joko'
+  //   employee.address = 'Bali'
+
+  //   console.log(employee.fullName)
+  //   console.log(employee.address)
+  //   console.log(toString())
+  // }
 
 
   // penerapan event binding
