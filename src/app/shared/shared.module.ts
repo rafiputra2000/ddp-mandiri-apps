@@ -8,6 +8,8 @@ import { HighlightDirective } from './directive/highlight.directive';
 import { BsButtonDirective } from './directive/bs-button.directive';
 import { DateCustomPipe } from './pipes/date-custom.pipe';
 import { BadgeCustomPipe } from './pipes/badge-custom.pipe';
+import { ValidationMessageComponent } from './components/validation-message/validation-message.component';
+import { StringUtil } from './utils/string.utils';
 
 
 
@@ -19,7 +21,8 @@ import { BadgeCustomPipe } from './pipes/badge-custom.pipe';
     HighlightDirective,
     BsButtonDirective,
     DateCustomPipe,
-    BadgeCustomPipe
+    BadgeCustomPipe,
+    ValidationMessageComponent
   ],
   imports: [
     CommonModule,
@@ -31,7 +34,9 @@ import { BadgeCustomPipe } from './pipes/badge-custom.pipe';
     HighlightDirective,
     BsButtonDirective,
     DateCustomPipe,
-    BadgeCustomPipe
-  ]
+    BadgeCustomPipe,
+    ValidationMessageComponent
+  ],
+  providers: [StringUtil]
 })
 export class SharedModule { }

@@ -12,13 +12,8 @@
     placeholder="Todo"
     formControlName= "name">
     <button appBsButton [disabled]="!todoForm.valid">Add</button>
-    <div class="invalid-feedback" *ngIf="name.errors?.['required']">
-      todo wajib di isi
-    </div>
-    <div class="invalid-feedback" *ngIf="name.errors?.['minlength']">
-      todo wajib di isi minimal 3 karakter
-    </div>
   </div>
+  <app-validation-message [control]="todoForm.get('name')" [field]="'todo'"></app-validation-message>
 </form>
 
 <!-- <h3>Form</h3>
