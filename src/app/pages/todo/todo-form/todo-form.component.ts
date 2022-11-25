@@ -1,6 +1,8 @@
 import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute, Params, RouteConfigLoadEnd, Router } from '@angular/router';
 import { Todo } from '../model/todo.model';
+import { TodoService } from '../service/todo.service';
 
 @Component({
   selector: 'app-todo-form',
@@ -10,22 +12,27 @@ import { Todo } from '../model/todo.model';
 
 export class TodoFormComponent implements OnInit {
 
-  //Two Ways Binding
-  @Input() todo!: Todo
-  @Output() todoChange: EventEmitter<Todo> = new EventEmitter<Todo>()
+  todo! : Todo;
 
+  constructor(private readonly todoService: TodoService, private readonly route: ActivatedRoute, private readonly router: Router) { }
 
-  @Output() saveTodo: EventEmitter<Todo> = new EventEmitter<Todo>()
+  // ngOnChanges(): void {
+  //   // console.log(this.todo);
 
-  constructor() { }
-
-  ngOnChanges(): void {
-    console.log(this.todo);
-
-    this.setFormValue(this.todo);
-  }
+  //   // this.setFormValue(this.todo);
+  // }
 
   ngOnInit(): void {
+    this.route.params.subscribe({
+      next: (params: Params) => {
+        const { id } = params;
+        // +id ini menjadikan yang string -> number
+        // berlaku untuk bilangan bulat
+        this.todo = this.todoService.get(+id);
+        this.setFormValue(this.todo)
+      }
+    })
+
   }
 
   todoForm: FormGroup = new FormGroup({
@@ -36,8 +43,9 @@ export class TodoFormComponent implements OnInit {
 
   onSubmit(): void {
     console.log(this.todoForm.value);
-    this.todoChange.emit(this.todoForm.value);
+    const todo = this.todoService.save(this.todoForm.value);
     this.todoForm.reset()
+    this.router.navigateByUrl('todo')
   }
 
   setFormValue(todo: Todo): void {

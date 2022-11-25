@@ -6,21 +6,11 @@
       <hr>
       <div class="row">
         <div class="col">
-          <app-todo-list
-          [todos]="todos"
-          (toggleTodo)="onToggleTodo($event)"
-          (deleteTodo)="onDeleteTodo($event)"
-          (editTodo)="onEditTodo($event)"
-          [isLoading]="isLoading"
-          >
-        </app-todo-list>
+          <app-todo-list></app-todo-list>
         </div>
         <div class="col">
           <h3>Form</h3>
-          <app-todo-form
-          (saveTodo)="onSaveTodo($event)"
-          [(todo)]="todo"
-          ></app-todo-form>
+          <app-todo-form></app-todo-form>
         </div>
       </div>
     </div>

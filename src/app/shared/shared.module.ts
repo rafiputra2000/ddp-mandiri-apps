@@ -7,6 +7,7 @@ import { RouterModule } from '@angular/router';
 import { HighlightDirective } from './directive/highlight.directive';
 import { BsButtonDirective } from './directive/bs-button.directive';
 import { DateCustomPipe } from './pipes/date-custom.pipe';
+import { BadgeCustomPipe } from './pipes/badge-custom.pipe';
 
 
 
@@ -17,7 +18,8 @@ import { DateCustomPipe } from './pipes/date-custom.pipe';
     NotFoundComponent,
     HighlightDirective,
     BsButtonDirective,
-    DateCustomPipe
+    DateCustomPipe,
+    BadgeCustomPipe
   ],
   imports: [
     CommonModule,
@@ -28,7 +30,8 @@ import { DateCustomPipe } from './pipes/date-custom.pipe';
     HeaderComponent,
     HighlightDirective,
     BsButtonDirective,
-    DateCustomPipe
+    DateCustomPipe,
+    BadgeCustomPipe
   ]
 })
 export class SharedModule { }

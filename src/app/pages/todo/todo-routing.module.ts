@@ -10,6 +10,10 @@ const routes:Routes = [
   {
     path: "",
     component: TodoComponent
+  },
+  {
+    path: ":id",
+    component: TodoComponent
   }
 ]
 
