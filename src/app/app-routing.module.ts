@@ -3,6 +3,7 @@ import { Routes, RouterModule} from "@angular/router";
 import { CoursesComponent } from "./pages/courses/courses.component";
 import { PagesComponent } from "./pages/pages.component";
 import { NotFoundComponent } from "./shared/components/not-found/not-found.component";
+import { RouteGuard } from "./shared/guard/route.guard";
 
 
 // const routes:Routes = [
@@ -52,13 +53,19 @@ const routes:Routes = [
   // },
   {
     path: "todo",
+    canActivate: [RouteGuard],
+    canActivateChild: [RouteGuard],
     loadChildren: () => import('./pages/pages.module').then(m => m.PagesModule)
   },
   {
-    path: "",
-    redirectTo: "/todo",
-    pathMatch: "full"
+    path: 'auth',
+    loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule)
   },
+  // {
+  //   path: "",
+  //   redirectTo: "/auth/login",
+  //   pathMatch: "full"
+  // },
   {
       path: '**',
       component: NotFoundComponent

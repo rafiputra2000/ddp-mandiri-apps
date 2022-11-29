@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg bg-dark navbar-dark py-3 fixed-top">
   <div class="container">
-    <a href="/home" class="navbar-brand">Frontend Bootcamp</a>
+    <a href="#" class="navbar-brand">Frontend Bootcamp</a>
 
     <button
       class="navbar-toggler"
@@ -14,22 +14,46 @@
     <div class="collapse navbar-collapse" id="navmenu">
       <ul class="navbar-nav ms-auto">
         <li class="nav-item">
-          <a href="#learn" class="nav-link">What You'll Learn</a>
-        </li>
-        <li class="nav-item">
-          <a href="#questions" class="nav-link">Questions</a>
-        </li>
-        <li class="nav-item">
-          <a href="#instructors" class="nav-link">Instructors</a>
-        </li>
-        <li class="nav-item">
-          <a routerLink="/home/courses" class="nav-link">Courses</a>
-        </li>
-
+          <a href="#home" class="nav-link"> Home</a>
+      </li>
+      <li class="nav-item">
+          <a href="#about" class="nav-link"> About</a>
+      </li>
+      <li class="nav-item">
+          <a href="#contact" class="nav-link"> Contact</a>
+      </li>
+      <li class="nav-item">
+          <a routerLink="/courses" class="nav-link"> Course</a>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          Pages
+        </a>
+        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <li><a class="dropdown-item" routerLink="/home">Home</a></li>
+          <li><a class="dropdown-item" routerLink="/todo">Todo</a></li>
+          <li><a class="dropdown-item" routerLink="/component-a">Component A</a></li>
+        </ul>
+      </li>
       </ul>
-      <button type="button" class="btn btn-primary btn-light login" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-        LOGIN
-      </button>
+      <ng-container *ngIf="!onLoggedIn(); else isLoggedIn">
+        <button
+          type="button"
+          class="btn btn-primary btn-light login"
+          routerLink="/auth/login"
+        >
+          LOGIN
+        </button>
+      </ng-container>
+      <ng-template #isLoggedIn>
+        <button
+          type="button"
+          class="btn btn-primary btn-light login"
+          (click)="onLoggedOut()"
+        >
+          LOGOUT
+        </button>
+      </ng-template>
     </div>
   </div>
 </nav>
