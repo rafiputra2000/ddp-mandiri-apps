@@ -1,20 +1,13 @@
 import { Injectable } from '@angular/core';
-import {
-  ActivatedRouteSnapshot,
-  CanActivate,
-  CanActivateChild,
-  Params,
-  Router,
-  RouterStateSnapshot,
-} from '@angular/router';
+import { ActivatedRouteSnapshot, CanActivate, CanActivateChild, Params, Router, RouterStateSnapshot, UrlTree } from '@angular/router';
+import { Observable } from 'rxjs';
 import Swal from 'sweetalert2';
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: 'root'
 })
 export class RouteGuard implements CanActivate, CanActivateChild {
-  constructor(private readonly router: Router) { }
-
+  constructor(private readonly router: Router){}
   canActivate(
     router: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
@@ -48,13 +41,13 @@ export class RouteGuard implements CanActivate, CanActivateChild {
     const menus = [
       {
         id: 1,
-        name: 'todos',
-        location: 'todos'
+        name: 'todo',
+        location: 'todo'
       },
       {
         id: 2,
         name: 'parent',
-        location: 'demo/parent'
+        location: 'component-a/child-aa'
       },
     ];
     // some -> menghasilkan boolean

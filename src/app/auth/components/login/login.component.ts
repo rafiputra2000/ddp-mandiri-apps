@@ -1,44 +1,49 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, Validators, AbstractControl } from '@angular/forms';
-import { Router } from '@angular/router';
-import Swal from 'sweetalert2';
-import { LoginResponse } from '../../model/login.model';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import { AuthService } from '../../service/auth.service';
+import Swal from 'sweetalert2';
+import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
+import { LoginResponse } from '../../model/login.model';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+  styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent implements OnInit {
-
   constructor(
     private readonly authService: AuthService,
-    private readonly router: Router
-  ) { }
+    private readonly router: Router,
+    private readonly route: ActivatedRoute
+  ) {}
 
-  ngOnInit(): void {
-  }
-
-  loginForm: FormGroup = new FormGroup({
-    email: new FormControl('', [Validators.required, Validators.email]),
-    password: new FormControl('', Validators.required)
+  loginForm:FormGroup =new FormGroup({
+    email:new FormControl('',[Validators.required,Validators.email]),
+    password:new FormControl('',Validators.required)
   })
+
+  ngOnInit(): void {}
 
   onSubmit(): void {
     const payload = this.loginForm.value;
     this.authService.login(payload).subscribe({
       next: (token: LoginResponse | null) => {
-        if (token) this.router.navigateByUrl('todo')
-        else {
+        if (token) {
+          this.route.queryParams.subscribe({
+            next: (params: Params) => {
+              const { next } = params;
+              this.router.navigateByUrl(next).finally();
+            },
+          });
+        } else {
           Swal.fire({
             icon: 'error',
-            title: 'Opps',
-            text: 'Email atau Password salah'
-          })
+            title: 'Oops...',
+            text: 'Email atau Password salah!',
+          });
         }
-      }
-    })
+      },
+    });
   }
 
   isFormValid(loginField: string): boolean {
@@ -47,5 +52,4 @@ export class LoginComponent implements OnInit {
     ) as AbstractControl;
     return control && control.invalid && (control.dirty || control.touched);
   }
-
 }

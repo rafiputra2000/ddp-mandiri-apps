@@ -5,6 +5,7 @@ import { AuthRoutingModule } from './auth-routing.module';
 import { SharedModule } from '../shared/shared.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AuthService } from './service/auth.service';
+import { HttpClientModule } from '@angular/common/http'
 
 
 
@@ -17,7 +18,8 @@ import { AuthService } from './service/auth.service';
     AuthRoutingModule,
     SharedModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   providers: [
     AuthService

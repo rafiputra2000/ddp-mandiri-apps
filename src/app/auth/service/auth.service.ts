@@ -1,3 +1,4 @@
+import { HttpClientModule } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, Observer } from 'rxjs';
 import { Login, LoginResponse } from '../model/login.model';
@@ -5,6 +6,10 @@ import { Login, LoginResponse } from '../model/login.model';
 @Injectable()
 export class AuthService {
   private storage: Storage = sessionStorage;
+
+  constructor(private readonly http: HttpClientModule){
+
+  }
 
   login(payload: Login): Observable<LoginResponse | null> {
     return new Observable<LoginResponse | null>(
