@@ -1,0 +1,11 @@
+{
+  "/api": {
+    "target": "https://enigma-todo-app.herokuapp.com/api/v1/",
+    "https": true,
+    "changeOrigin": true,
+    "pathRewrite": {
+      "^/api/v1": ""
+    },
+    "logLevel": "debug"
+  }
+}
