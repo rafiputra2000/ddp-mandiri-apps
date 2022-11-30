@@ -1,20 +1,18 @@
-<section class="p-5 p-lg-0 pt-lg-5 text-sm-start mt-5 mb-5">
+<section id="todo" class="todo p-5">
   <div class="container">
-    <div class="mt-5">
-      <h1 class="text-center">TODO</h1>
-      <h3 class="text-center">{{ today | dateCustom: "eeee, dd MMMM yyyy":locale }}</h3>
-      <hr>
-      <div class="row">
-        <div class="col">
-          <app-todo-list></app-todo-list>
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="todo-title">
+          <h2>Todo</h2>
+          <h6 class="text-center">
+            {{ today | dateCustom: "eeee, dd MMMM yyyy":locale }}
+          </h6>
+          <div class="line"></div>
         </div>
-        <div class="col">
-          <h3>Form</h3>
-          <app-todo-form></app-todo-form>
-        </div>
+      </div>
+      <div class="col-md-12 col-sm-12 mt-3">
+        <router-outlet></router-outlet>
       </div>
     </div>
   </div>
 </section>
-
-

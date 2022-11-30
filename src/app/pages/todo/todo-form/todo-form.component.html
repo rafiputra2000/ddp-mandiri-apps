@@ -1,9 +1,9 @@
-<form [formGroup]="todoForm" (ngSubmit)="onSubmit()">
+<!-- <form [formGroup]="todoForm" (ngSubmit)="onSubmit()">
   <div class="input-group mb-3">
     <div class="input-group-text">
       <input class="form-check-input mt-0" type="checkbox" value="" aria-label="Checkbox for following text input" formControlName="isDone">
     </div>
-    <!-- class="form-control {{isFormValid('name')}}" -->
+    class="form-control {{isFormValid('name')}}"
     <input
     type="text"
     class="form-control"
@@ -14,7 +14,41 @@
     <button appBsButton [disabled]="!todoForm.valid">Add</button>
   </div>
   <app-validation-message [control]="todoForm.get('name')" [field]="'todo'"></app-validation-message>
-</form>
+</form> -->
+<h4>Form</h4>
+<div class="shadow-sm p-3 mb-5 bg-body rounded">
+  <div class="card-body">
+    <form [formGroup]="todoForm" (ngSubmit)="onSubmit()">
+      <div class="input-group mb-3">
+        <div class="input-group-text">
+          <input
+            type="checkbox"
+            class="form-check-input"
+            formControlName="isCompleted"
+          />
+        </div>
+        <input
+          type="text"
+          class="form-control"
+          [ngClass]="{ 'is-invalid': isFormValid('name') }"
+          placeholder="Todo"
+          aria-label="Todo"
+          formControlName="name"
+        />
+        <button class="btn btn-outline-primary" [disabled]="!todoForm.valid">
+          <i class="bi bi-save"></i> Simpan
+        </button>
+        <button class="btn btn-outline-warning" routerLink="/todos">
+          <i class="bi bi-arrow-left"></i> Kembali
+        </button>
+      </div>
+      <app-validation-message
+        [control]="todoForm.get('name')"
+        [field]="'todo'"
+      ></app-validation-message>
+    </form>
+  </div>
+</div>
 
 <!-- <h3>Form</h3>
 <div >
