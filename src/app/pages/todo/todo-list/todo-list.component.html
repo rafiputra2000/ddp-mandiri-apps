@@ -1,5 +1,7 @@
-<div class="spinner-border" role="status" *ngIf="isLoading; else showTodo">
-  <span class="visually-hidden">Loading...</span>
+<div class="d-flex justify-content-center" *ngIf="isLoading; else showTodo">
+  <div class="spinner-border" role="status">
+    <span class="visually-hidden">Loading...</span>
+  </div>
 </div>
 <ng-template #showTodo>
   <div class="card shadow-sm">

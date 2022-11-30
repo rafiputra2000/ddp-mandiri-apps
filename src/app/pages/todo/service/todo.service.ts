@@ -1,5 +1,5 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Injectable, SkipSelf } from '@angular/core';
 import { Observable, Observer } from 'rxjs';
 import { ApiResponse } from 'src/app/shared/models/api-response.model';
 import { Todo } from '../model/todo.model';
@@ -8,14 +8,14 @@ import { Todo } from '../model/todo.model';
   providedIn: 'root',
 })
 export class TodoService {
-  constructor(private readonly http: HttpClient) {}
+  constructor(@SkipSelf() private readonly http: HttpClient) {}
   private baseUrl: string = '/api/v1/todos';
 
   // headers: Authorization: Bearer token
   getAll(): Observable<ApiResponse<Todo[]>> {
     try {
-      const headers = this.setHeaders();
-      return this.http.get<ApiResponse<Todo[]>>(this.baseUrl, { headers });
+      // const headers = this.setHeaders();
+      return this.http.get<ApiResponse<Todo[]>>(this.baseUrl);
     } catch (error: any) {
       return error.message;
     }
@@ -23,13 +23,11 @@ export class TodoService {
 
   save(todo: Todo): Observable<ApiResponse<Todo>> {
     try {
-      const headers = this.setHeaders();
+      // const headers = this.setHeaders();
       if (todo.id) {
-        return this.http.put<ApiResponse<Todo>>(this.baseUrl, todo, {
-          headers,
-        });
+        return this.http.put<ApiResponse<Todo>>(this.baseUrl, todo);
       }
-      return this.http.post<ApiResponse<Todo>>(this.baseUrl, todo, { headers });
+      return this.http.post<ApiResponse<Todo>>(this.baseUrl, todo);
     } catch (error: any) {
       return error.message;
     }
@@ -37,10 +35,8 @@ export class TodoService {
 
   get(id: string): Observable<ApiResponse<Todo>> {
     try {
-      const headers = this.setHeaders();
-      return this.http.get<ApiResponse<Todo>>(`${this.baseUrl}/${id}`, {
-        headers,
-      });
+      // const headers = this.setHeaders();
+      return this.http.get<ApiResponse<Todo>>(`${this.baseUrl}/${id}`);
     } catch (error: any) {
       return error.message;
     }
@@ -48,10 +44,8 @@ export class TodoService {
 
   remove(id: string): Observable<ApiResponse<string>> {
     try {
-      const headers = this.setHeaders();
-      return this.http.delete<ApiResponse<string>>(`${this.baseUrl}/${id}`, {
-        headers,
-      });
+      // const headers = this.setHeaders();
+      return this.http.delete<ApiResponse<string>>(`${this.baseUrl}/${id}`);
     } catch (error: any) {
       return error.message;
     }
@@ -59,23 +53,22 @@ export class TodoService {
 
   toggleTodo(todo: Todo): Observable<void> {
     try {
-      const headers = this.setHeaders();
+      // const headers = this.setHeaders();
       todo.isCompleted = !todo.isCompleted;
       const { id, name, isCompleted } = todo;
       return this.http.put<void>(
         this.baseUrl,
-        { id, name, isCompleted },
-        { headers }
+        { id, name, isCompleted }
       );
     } catch (error: any) {
       return error.message;
     }
   }
 
-  private setHeaders(): HttpHeaders {
-    const token = sessionStorage.getItem('token') as string;
-    return new HttpHeaders({
-      Authorization: `Bearer ${token}`,
-    });
-  }
+  // private setHeaders(): HttpHeaders {
+  //   const token = sessionStorage.getItem('token') as string;
+  //   return new HttpHeaders({
+  //     Authorization: `Bearer ${token}`,
+  //   });
+  // }
 }
