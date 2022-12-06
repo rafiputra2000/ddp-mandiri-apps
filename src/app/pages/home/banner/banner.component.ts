@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BannerComponent implements OnInit {
 
+  subTitle:string = "Web Developer"
+
   constructor() { }
 
   ngOnInit(): void {
